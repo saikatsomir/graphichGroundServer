@@ -1,0 +1,28 @@
+runtime: nodejs20 # Specify your runtime (e.g., nodejs14, python38, etc.)
+
+# Optional: Configure your instance class
+instance_class: F1 # Use appropriate class based on your needs
+
+# Automatic scaling configuration
+automatic_scaling:
+  min_instances: 1 # Minimum number of instances
+  max_instances: 5 # Maximum number of instances
+  target_cpu_utilization: 0.65 # Target CPU utilization for scaling
+
+# Define the handlers for your application
+handlers:
+  - url: /.*
+    script: auto # Automatically route all requests to your application
+
+# Optional: Specify environment variables
+env_variables:
+  NODE_ENV: production # Set environment variables as needed
+  MONGODB_URI: "your_mongodb_connection_string" # Example for MongoDB connection
+
+# Health check configuration
+health_check:
+  enable_health_check: true # Enable health check
+  healthy_threshold: 2 # Number of consecutive successes required
+  unhealthy_threshold: 2 # Number of consecutive failures required
+  #   timeout: 4s # Timeout for each health check request
+#   check_interval: 10s # Interval between health checks

@@ -194,7 +194,7 @@ async function run() {
       res.send(result);
     });
 
-    //LOGO COLLECTION  OPERATION
+    // LOGO COLLECTION  OPERATION
     app.get("/logos", async (req, res) => {
       const result = await logosCollection.find().toArray();
       res.send(result);
