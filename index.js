@@ -9,7 +9,7 @@ const cors = require("cors");
 // const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const port = process.env.PROT || 5000;
+const PORT = process.env.PORT || 3000; // 3000 is the default port for local development
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const stripe = require("stripe")(process.env.STRIPE_SECRECT_KEY);
 // Set your SendGrid API Key
@@ -264,6 +264,6 @@ app.get("/", (req, res) => {
   res.send("server is running");
 });
 
-app.listen(port, () => {
-  console.log(`server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
