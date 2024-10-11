@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "@types/mongoose": "^5.11.96"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
