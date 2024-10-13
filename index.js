@@ -9,7 +9,7 @@ const cors = require("cors");
 // const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const port = process.env.PROT || 5000;
+const port = process.env.PORT || 5000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const stripe = require("stripe")(process.env.STRIPE_SECRECT_KEY);
 // Set your SendGrid API Key
