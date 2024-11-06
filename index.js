@@ -5,8 +5,7 @@ const multer = require("multer");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const ImageKit = require("imagekit");
-const port = process.env.PORT || 5000;
+const port = process.env.PROT || 5000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const stripe = require("stripe")(process.env.STRIPE_SECRECT_KEY);
 const imagekit = new ImageKit({
@@ -201,7 +200,7 @@ async function run() {
     app.get("/api/users/:email", verifyToken, async (req, res) => {
       try {
         const email = req.params.email;
-        const user = await usersCollection("/users").findOne({ email: email });
+        const user = await usersCollection.findOne({ email: email });
 
         if (!user) {
           return res.status(404).json({ message: "User not found" });
@@ -373,6 +372,6 @@ app.get("/", (req, res) => {
   res.send("server is running");
 });
 
-app.listen(port, () => {
+app.listen(5000, "0.0.0.0", () => {
   console.log(`Server is running on port ${port}`);
 });
