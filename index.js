@@ -5,7 +5,7 @@ const multer = require("multer");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const port = process.env.PROT || 5000;
+const PORT = process.env.PORT || 5000;
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const stripe = require("stripe")(process.env.STRIPE_SECRECT_KEY);
 const imagekit = new ImageKit({
@@ -42,6 +42,7 @@ async function run() {
     });
     const storage = multer.memoryStorage();
     const upload = multer({ storage: storage });
+    //generate custom id
     const generateCustomId = async () => {
       const randomNumber = Math.floor(10000 + Math.random() * 90000);
       const customId = `gg${randomNumber}`;
@@ -373,5 +374,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(5000, "0.0.0.0", () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${PORT}`);
 });
